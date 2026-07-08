@@ -401,6 +401,12 @@ Patience:
 
 ---
 
+# Early Stopping
+
+Patience: 30 epochs
+
+Training stops when validation loss does not improve for 30 consecutive epochs.
+
 # Residual Scaling Factors
 
 The following residual scaling factors were selected using development-set DTW tuning.
@@ -453,6 +459,22 @@ Prediction = Prediction × Standard Deviation + Mean
 
 ---
 
+## Visualization Generation
+
+After contour reconstruction and denormalization:
+
+1. Previous contour is plotted.
+2. Future contour is plotted.
+3. Predicted contour is plotted.
+
+Separate PNG files are generated for:
+
+- Contour1
+- Contour2
+- Contour3
+
+These visualizations are produced automatically during inference and saved locally.
+
 # Required Package Installation
 
 Install:
@@ -492,15 +514,24 @@ fut.mat
 python inference.py
 ```
 
+Inference generates:
+
+1. predicted_contour.mat
+2. contour1_prediction.png
+3. contour2_prediction.png
+4. contour3_prediction.png
+
 # Input Files
 
 prev.mat
 
-Contains contour coordinates for the previous frame.
+Contains contour coordinate data corresponding to the previous frame.
 
 fut.mat
 
-Contains contour coordinates for the future frame.
+Contains contour coordinate data corresponding to the future frame.
+
+The exact field names are determined by the provided evaluation data.
 
 Both files contain contour coordinates for:
 
@@ -508,7 +539,9 @@ Both files contain contour coordinates for:
 - Contour2
 - Contour3
 
-# Output File
+# Output Files
+
+## Contour Predictions
 
 predicted_contour.mat
 
@@ -519,3 +552,23 @@ Contains:
 - contour3
 
 Predicted contour coordinates in original coordinate space.
+
+---
+
+## Visualization Files
+
+The inference pipeline also generates visualizations for qualitative inspection.
+
+Generated files:
+
+- contour1_prediction.png
+- contour2_prediction.png
+- contour3_prediction.png
+
+Each visualization contains:
+
+- Previous contour
+- Future contour
+- Predicted contour
+
+These plots are generated automatically during inference and are intended for visual verification of contour reconstruction quality.
