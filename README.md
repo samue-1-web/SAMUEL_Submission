@@ -543,13 +543,9 @@ Both files contain contour coordinates for:
 
 ## Contour Predictions
 
-predicted_contour.mat
-
-Contains:
-
-- contour1
-- contour2
-- contour3
+predicted_contour1.mat
+predicted_contour2.mat
+predicted_contour3.mat
 
 Predicted contour coordinates in original coordinate space.
 
@@ -564,11 +560,5 @@ Generated files:
 - contour1_prediction.png
 - contour2_prediction.png
 - contour3_prediction.png
-
-Each visualization contains:
-
-- Previous contour
-- Future contour
-- Predicted contour
 
 These plots are generated automatically during inference and are intended for visual verification of contour reconstruction quality.
